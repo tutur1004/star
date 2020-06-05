@@ -31,39 +31,91 @@ public class Main {
         log("À bientôt");
     }
 
+    /**
+     *      Logger avec date !
+     */
     public static void log(String msg) {
         System.out.println("[" + Date.setDateNow() + "] " + msg);
     }
 
     private static void printPatern(int n) {
         int middle = getMiddle(n);
-
-
+        int largeur = middle*2+1;
+        printHead(n, middle);
+        printCenterLine(n, middle, largeur);
+        //printBodyHead();
+        // ligne du centre
+        printSpaces(n);
+        System.out.print(DISPLAYCHAR);
+        printSpaces((middle-n-1)+1+(middle-n-1));
+        System.out.println(DISPLAYCHAR);
+        printCenterLine(n, middle, largeur);
+        //printBodyDown();
+        printDown(n, middle);
     }
 
+    /**
+     *      Fonction pour print x espaces sans changer de ligne
+     */
     private static void printSpaces(int nbSpaces) {
-        for (int space = 1; space < nbSpaces; space++) {
+        for (int space = 0; space < nbSpaces; space++) {
             System.out.print(" ");
         }
     }
 
+    /**
+     *      Fonction pour récupérer le nombre de chars avant le centre de l'étoile
+     */
     private static int getMiddle(int n) {
-        return Math.round(n*2.8f)+1;
+        return Math.round(n*2.8f);
     }
 
-    private static void printHead(int n) {
+    private static void printHead(int n, int middle) {
+        // Cursor en haut
+        printSpaces(middle);
+        System.out.print(DISPLAYCHAR);
+        // i lignes
+        for (int i = 1;i<n;i++) {
+            System.out.println();
+            printSpaces(middle-i);
+            System.out.print(DISPLAYCHAR);
+            printSpaces((i*2)-1);
+            System.out.print(DISPLAYCHAR);
+        }
+        System.out.println();
+    }
+
+    private static void printCenterLine(int n, int middle, int largeur) {
+        for (int i = 0;i<largeur;i++) {
+            if (i <= middle-n || i >= largeur-middle+n-1) {
+                System.out.print(DISPLAYCHAR);
+            } else {
+                printSpaces(1);
+            }
+        }
+        System.out.println();
+    }
+
+    private static void printBodyHead(int n, int middle) {
 
     }
 
-    private static void printBodyHead(int n) {
+
+    private static void printBodyDown(int n, int middle) {
 
     }
 
-    private static void printBodyDown(int n) {
-
-    }
-
-    private static void printDown(int n) {
-
+    private static void printDown(int n, int middle) {
+        // i lignes
+        for (int i = n; i > 0; i--) {
+            printSpaces(middle - i + 1);
+            System.out.print(DISPLAYCHAR);
+            if (i>1) {
+                printSpaces(i*2-3);
+                System.out.print(DISPLAYCHAR);
+                System.out.println();
+            }
+        }
+        System.out.println();
     }
 }
