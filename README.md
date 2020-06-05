@@ -2,5 +2,8 @@
 
 Test technique - Programme MSc Pro - EPITECH
 
-Le fichier jar peut être lancé de la manière suivante :
-'java -jar star.jar'
+Le fichier jar peut être lancé via la commande bash suivante suivante :
+
+```java -jar star.jar```
+
+Testé sur Java 8.
