@@ -14,8 +14,8 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             log("Définissez la taille de l'étoile:");
             String input = scanner.nextLine();
-            if (tools.isNumeric(input)) {
-                int size = Math.round(Float.parseFloat(input));
+            if (tools.isInt(input)) {
+                int size = Integer.parseInt(input);
                 if (size>=1) {
                     printPatern(size);
                 } else {

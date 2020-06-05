@@ -1,11 +1,14 @@
 package fr.milekat.star.utils;
 
 public class tools {
-    public static boolean isNumeric(String str) {
-        try {
-            Double.parseDouble(str);
+    public static boolean isInt(String string) {
+        try
+        {
+            Integer.parseInt(string);
             return true;
-        } catch(NumberFormatException e){
+        }
+        catch (NumberFormatException ignore)
+        {
             return false;
         }
     }
