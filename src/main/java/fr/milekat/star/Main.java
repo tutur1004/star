@@ -43,12 +43,13 @@ public class Main {
         int largeur = middle*2+1;
         printHead(n, middle);
         printCenterLine(n, middle, largeur);
-        //printBodyHead();
+        printBodyHead(n, largeur);
         // ligne du centre
         printSpaces(n);
         System.out.print(DISPLAYCHAR);
         printSpaces((middle-n-1)+1+(middle-n-1));
         System.out.println(DISPLAYCHAR);
+        printBodyDown(n, largeur);
         printCenterLine(n, middle, largeur);
         //printBodyDown();
         printDown(n, middle);
@@ -96,13 +97,25 @@ public class Main {
         System.out.println();
     }
 
-    private static void printBodyHead(int n, int middle) {
-
+    private static void printBodyHead(int n, int largeur) {
+        for (int i = 1;i<n;i++) {
+            printSpaces(i);
+            System.out.print(DISPLAYCHAR);
+            printSpaces(largeur-2-i*2);
+            System.out.print(DISPLAYCHAR);
+            System.out.println();
+        }
     }
 
 
-    private static void printBodyDown(int n, int middle) {
-
+    private static void printBodyDown(int n, int largeur) {
+        for (int i = n;i>1;i--) {
+            printSpaces(i-1);
+            System.out.print(DISPLAYCHAR);
+            printSpaces(largeur-i*2);
+            System.out.print(DISPLAYCHAR);
+            System.out.println();
+        }
     }
 
     private static void printDown(int n, int middle) {
