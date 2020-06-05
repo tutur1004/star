@@ -24,11 +24,11 @@ public class Main {
             } else {
                 log("Merci de choisir un nombre entier suppérieur ou égual à 1.");
             }
-            log("Voulez vous continuer ? (Oui/Non)");
+            log("Voulez vous continuer le programme ? (O/N)");
             String reponse = scanner.nextLine();
-            if (reponse.equalsIgnoreCase("non")) continuer = false;
+            if (reponse.equalsIgnoreCase("n")) continuer = false;
         } while (continuer);
-        log("À bientôt");
+        log("À bientôt.");
     }
 
     /**
@@ -38,25 +38,35 @@ public class Main {
         System.out.println("[" + Date.setDateNow() + "] " + msg);
     }
 
-    private static void printPatern(int n) {
-        int middle = getMiddle(n);
+    /**
+     *      Création & affichage de l'étoile
+     * @param size taille de l'étoile
+     */
+    private static void printPatern(int size) {
+        int middle = getMiddle(size);
         int largeur = middle*2+1;
-        printHead(n, middle);
-        printCenterLine(n, middle, largeur);
-        printBodyHead(n, largeur);
+        //  Tête
+        printHead(size, middle);
+        //  Première ligne horizontale
+        printCenterLine(size, middle, largeur);
+        //  Corp supérieur
+        printBodyHead(size, largeur);
         // ligne du centre
-        printSpaces(n);
+        printSpaces(size);
         System.out.print(DISPLAYCHAR);
-        printSpaces((middle-n-1)+1+(middle-n-1));
+        printSpaces((middle-size-1)+1+(middle-size-1));
         System.out.println(DISPLAYCHAR);
-        printBodyDown(n, largeur);
-        printCenterLine(n, middle, largeur);
-        //printBodyDown();
-        printDown(n, middle);
+        //  Corp inférieur
+        printBodyDown(size, largeur);
+        //  Seconde ligne horizontale
+        printCenterLine(size, middle, largeur);
+        //  Tête inférieure
+        printDown(size, middle);
+        System.out.println();
     }
 
     /**
-     *      Fonction pour print x espaces sans changer de ligne
+     *      Fonction pour print x espace(s) sur la ligne en cours
      */
     private static void printSpaces(int nbSpaces) {
         for (int space = 0; space < nbSpaces; space++) {
@@ -71,6 +81,9 @@ public class Main {
         return Math.round(n*2.8f);
     }
 
+    /**
+     *      Affichage de la tête de l'étoile
+     */
     private static void printHead(int n, int middle) {
         // Cursor en haut
         printSpaces(middle);
@@ -86,6 +99,9 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     *      Affichage de la partie horizontale (Affichée 2 fois)
+     */
     private static void printCenterLine(int n, int middle, int largeur) {
         for (int i = 0;i<largeur;i++) {
             if (i <= middle-n || i >= largeur-middle+n-1) {
@@ -97,6 +113,9 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     *      Affichage du corp supérieur de l'étoile
+     */
     private static void printBodyHead(int n, int largeur) {
         for (int i = 1;i<n;i++) {
             printSpaces(i);
@@ -107,7 +126,9 @@ public class Main {
         }
     }
 
-
+    /**
+     *      Affichage du corp inférieur de l'étoile
+     */
     private static void printBodyDown(int n, int largeur) {
         for (int i = n;i>1;i--) {
             printSpaces(i-1);
@@ -118,6 +139,9 @@ public class Main {
         }
     }
 
+    /**
+     *      Affichage de la 'tête' inférieure de l'étoile
+     */
     private static void printDown(int n, int middle) {
         // i lignes
         for (int i = n; i > 0; i--) {
@@ -129,6 +153,5 @@ public class Main {
                 System.out.println();
             }
         }
-        System.out.println();
     }
 }
