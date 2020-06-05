@@ -9,26 +9,19 @@ public class Main {
     private static final String DISPLAYCHAR = "*";
 
     public static void main(String[] args) {
-        boolean continuer = true;
-        do {
-            Scanner scanner = new Scanner(System.in);
-            log("Définissez la taille de l'étoile:");
-            String input = scanner.nextLine();
-            if (tools.isInt(input)) {
-                int size = Integer.parseInt(input);
-                if (size>=1) {
-                    printPatern(size);
-                } else {
-                    log("Merci de choisir un nombre entier suppérieur ou égual à 1.");
-                }
+        Scanner scanner = new Scanner(System.in);
+        log("Définissez la taille de l'étoile:");
+        String input = scanner.nextLine();
+        if (tools.isInt(input)) {
+            int size = Integer.parseInt(input);
+            if (size>=1) {
+                printPatern(size);
             } else {
                 log("Merci de choisir un nombre entier suppérieur ou égual à 1.");
             }
-            log("Voulez vous continuer le programme ? (O/N)");
-            String reponse = scanner.nextLine();
-            if (reponse.equalsIgnoreCase("n")) continuer = false;
-        } while (continuer);
-        log("À bientôt.");
+        } else {
+            log("Merci de choisir un nombre entier suppérieur ou égual à 1.");
+        }
     }
 
     /**
